@@ -26,6 +26,10 @@ MODS=(
     "843593391 @RHSGREF"
     "1082989427 @RHSSAF"
     "2174159327 @ACE_Compat_RHS"
+    # Optional Client QoL (included by default)
+    "498724824 @STUI"
+    "817849698 @Blastcore_Edited"
+    "1771939421 @Enhanced_Soundscape"
 )
 
 echo "=== Installing SteamCMD ==="

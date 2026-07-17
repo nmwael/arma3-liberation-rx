@@ -82,7 +82,7 @@ terrainGrid=12.5;
 activeKeys[]={};
 PROFILEOF
 
-# Build mod parameter (includes RHS)
+# Build mod parameter (includes QoL mods by default)
 MODS=(
     "@CBA_A3"
     "@ACE3"
@@ -97,12 +97,16 @@ MODS=(
     "@AdvancedRappelling"
     "@AdvancedUrbanRappelling"
     "@Liberation_RX"
-    # RHS (free, full factions)
+    # RHS (free, full factions, Liberation RX native)
     "@RHSAFRF"
     "@RHSUSAF"
     "@RHSGREF"
     "@RHSSAF"
     "@ACE_Compat_RHS"
+    # QoL mods (included by default)
+    "@STUI"
+    "@Blastcore_Edited"
+    "@Enhanced_Soundscape"
 )
 
 MOD_STRING=$(IFS=";"; echo "${MODS[*]}")
