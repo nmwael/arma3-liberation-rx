@@ -1,0 +1,107 @@
+{
+  "name": "Arma 3 Liberation RX",
+  "description": "6-player co-op Liberation RX server for Pterodactyl (Discord voice, no TFAR)",
+  "author": "nmwael",
+  "version": "1.0.0",
+  "startup": "scripts/start.sh",
+  "script": {
+    "privileged": false,
+    "install": {
+      "commands": [
+        "mkdir -p /home/container/scripts",
+        "curl -sL https://raw.githubusercontent.com/nmwael/arma3-liberation-rx/main/scripts/download_mods.sh -o /home/container/scripts/download_mods.sh",
+        "curl -sL https://raw.githubusercontent.com/nmwael/arma3-liberation-rx/main/scripts/start.sh -o /home/container/scripts/start.sh",
+        "chmod +x /home/container/scripts/*.sh"
+      ],
+      "entrypoint": "bash /home/container/scripts/download_mods.sh"
+    }
+  },
+  "variables": [
+    {
+      "name": "Server Name",
+      "description": "Server hostname shown in browser",
+      "env_variable": "SERVER_NAME",
+      "default_value": "Liberation RX - 6 Player Co-op",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:64"
+    },
+    {
+      "name": "Server Password",
+      "description": "Password to join the server",
+      "env_variable": "SERVER_PASSWORD",
+      "default_value": "changeme",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:32"
+    },
+    {
+      "name": "Admin Password",
+      "description": "Admin login password (#login)",
+      "env_variable": "ADMIN_PASSWORD",
+      "default_value": "admin123",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|max:32"
+    },
+    {
+      "name": "Max Players",
+      "description": "Maximum player slots (6 players + headroom)",
+      "env_variable": "MAX_PLAYERS",
+      "default_value": "10",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|integer|min:2|max:64"
+    },
+    {
+      "name": "Game Port",
+      "description": "Game port (allocated by Pterodactyl)",
+      "env_variable": "SERVER_PORT",
+      "default_value": "2302",
+      "user_viewable": true,
+      "user_editable": false,
+      "rules": "required|integer|min:1024|max:65535"
+    },
+    {
+      "name": "Mission File",
+      "description": "Liberation RX mission PBO filename in mpmissions/",
+      "env_variable": "MISSION_FILE",
+      "default_value": "Liberation_RX.Altis.pbo",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string"
+    }
+  ],
+  "ports": [
+    {
+      "name": "Game",
+      "port_variable": "SERVER_PORT",
+      "protocol": "udp",
+      "default": 2302
+    },
+    {
+      "name": "Steam Query",
+      "port_variable": "STEAM_QUERY_PORT",
+      "protocol": "udp",
+      "default": 2303
+    },
+    {
+      "name": "Steam Master",
+      "port_variable": "STEAM_MASTER_PORT",
+      "protocol": "udp",
+      "default": 2304
+    },
+    {
+      "name": "BattlEye",
+      "port_variable": "BATTLEYE_PORT",
+      "protocol": "udp",
+      "default": 2305
+    }
+  ],
+  "mounts": [],
+  "environment": {
+    "STEAM_QUERY_PORT": "2303",
+    "STEAM_MASTER_PORT": "2304",
+    "BATTLEYE_PORT": "2305"
+  }
+}

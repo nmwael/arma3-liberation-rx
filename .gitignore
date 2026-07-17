@@ -1,0 +1,29 @@
+# Server runtime
+serverfiles/*.log
+serverfiles/*.pid
+serverfiles/arma3server*
+serverfiles/steamapps/
+serverfiles/Steam/
+serverfiles/battleye/
+serverfiles/mpmissions/*.pbo.bak
+
+# SteamCMD
+steamcmd/
+steamcmd_linux.tar.gz
+
+# Workshop downloads
+Steam/
+
+# Config with secrets
+serverfiles/server.cfg
+serverfiles/basic.cfg
+serverfiles/profile/server.Arma3Profile
+
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml

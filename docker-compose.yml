@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  arma3-liberation-rx:
+    image: quay.io/parkervcp/pterodactyl-images:arma3_latest
+    container_name: arma3-liberation-rx
+    environment:
+      - SERVER_NAME=Liberation RX - 6 Player Co-op (Local)
+      - SERVER_PASSWORD=changeme
+      - ADMIN_PASSWORD=admin123
+      - MAX_PLAYERS=10
+      - SERVER_PORT=2302
+      - MISSION_FILE=Liberation_RX.Altis.pbo
+    ports:
+      - "2302:2302/udp"   # Game
+      - "2303:2303/udp"   # Steam Query
+      - "2304:2304/udp"   # Steam Master
+      - "2305:2305/udp"   # BattlEye
+    volumes:
+      - ./serverfiles:/home/container/serverfiles
+      - ./scripts:/home/container/scripts:ro
+    working_dir: /home/container
+    entrypoint: /home/container/scripts/start.sh
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+          cpus: '4'
+    stdin_open: true
+    tty: true
