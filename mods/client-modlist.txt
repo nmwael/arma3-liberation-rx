@@ -1,0 +1,31 @@
+# Liberation RX Client Modpack (6 Players)
+# Copy each Workshop ID to Steam Workshop search, or create a Steam Collection
+
+# Required (12)
+450814997   # CBA_A3
+463939057   # ACE3
+583496184   # CUP Terrains Core
+583544987   # CUP Terrains Maps
+583545784   # CUP Units
+583546887   # CUP Weapons
+583547213   # CUP Vehicles
+873218719   # ACE Compat - CUP
+333310405   # Enhanced Movement
+666656604   # Advanced Towing
+665483317   # Advanced Rappelling
+1474177632  # Advanced Urban Rappelling
+
+# RHS - Included by Default (5)
+843425103   # RHS: AFRF
+843577117   # RHS: USAF
+843593391   # RHS: GREF
+1082989427  # RHS: SAF
+2174159327  # ACE Compat - RHS
+
+# Quality of Life - Included by Default (3)
+498724824   # STUI (ShackTac UI)
+817849698   # Blastcore Edited
+1771939421  # Enhanced Soundscape
+
+# Optional (1)
+723629297   # JSRS Soundmod (Heavy)
