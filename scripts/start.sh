@@ -82,7 +82,7 @@ terrainGrid=12.5;
 activeKeys[]={};
 PROFILEOF
 
-# Build mod parameter
+# Build mod parameter (includes RHS)
 MODS=(
     "@CBA_A3"
     "@ACE3"
@@ -97,6 +97,12 @@ MODS=(
     "@AdvancedRappelling"
     "@AdvancedUrbanRappelling"
     "@Liberation_RX"
+    # RHS (free, full factions)
+    "@RHSAFRF"
+    "@RHSUSAF"
+    "@RHSGREF"
+    "@RHSSAF"
+    "@ACE_Compat_RHS"
 )
 
 MOD_STRING=$(IFS=";"; echo "${MODS[*]}")

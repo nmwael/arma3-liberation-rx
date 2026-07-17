@@ -182,3 +182,71 @@ docker compose up -d
 - [Liberation RX Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2659632121)
 - [Pterodactyl Arma 3 Egg](https://github.com/parkervcp/eggs/tree/master/game/arma3)
 - [Docker Image](https://quay.io/repository/parkervcp/pterodactyl-images?tab=tags)
+
+## Optional Weapon Mods (Add More Weapons)
+
+Add these to `scripts/download_mods.sh` MODS array and `scripts/start.sh` MODS array.
+
+### RHS (Best for faction variety + ACE compat)
+| Mod | Workshop ID | Folder |
+|-----|-------------|--------|
+| RHS: AFRF (Russia) | 843425103 | @RHSAFRF |
+| RHS: USAF (USA) | 843577117 | @RHSUSAF |
+| RHS: GREF (Serbia/others) | 843593391 | @RHSGREF |
+| RHS: SAF (Serbia Armed Forces) | 1082989427 | @RHSSAF |
+| ACE Compat - RHS | 2174159327 | @ACE_Compat_RHS |
+
+> Adds full Russian/US/Serbian factions with vehicles, weapons, gear. Liberation RX supports RHS factions natively.
+
+### NIArms (Modern weapons, high quality)
+| Mod | Workshop ID | Folder |
+|-----|-------------|--------|
+| NIArms Core | 1602175578 | @NIArms_Core |
+| NIArms AK | 1602175578 | @NIArms_AK |
+| NIArms AR | 1602175578 | @NIArms_AR |
+| NIArms MGs | 1602175578 | @NIArms_MG |
+| NIArms SMGs | 1602175578 | @NIArms_SMG |
+| NIArms DMRs | 1602175578 | @NIArms_DMR |
+| ACE Compat - NIArms | 1602175578 | @ACE_Compat_NIArms |
+
+> Modern real-world weapons (HK416, SCAR, AK-12, MCX, etc.). All ACE compatible.
+
+### CUP Weapons Extensions
+| Mod | Workshop ID | Folder |
+|-----|-------------|--------|
+| CUP Weapons - Extended Magazines | 1944013651 | @CUP_Weapons_Extended |
+| CUP Weapons - Attachments | 1944013651 | @CUP_Weapons_Attachments |
+
+### DLCs (Paid, but excellent)
+| DLC | Workshop ID | Notes |
+|-----|-------------|-------|
+| Global Mobilization (Cold War Germany) | 1046945914 | Weapons, factions, Weferlingen map |
+| CSLA Iron Curtain (Czechoslovakia) | 2372269040 | Warsaw Pact weapons, Livonia map |
+| Western Sahara (2030s near-future) | 1824977259 | Modern weapons, Tanoa variant |
+| Contact (Livonia + aliens) | 1824977259 | Livonia map, new weapons |
+
+### To Add (Edit download_mods.sh):
+```bash
+# Add to MODS array:
+"843425103 @RHSAFRF"
+"843577117 @RHSUSAF"
+"843593391 @RHSGREF"
+"1082989427 @RHSSAF"
+"2174159327 @ACE_Compat_RHS"
+```
+
+Then add to start.sh MODS array:
+```bash
+"@RHSAFRF"
+"@RHSUSAF"
+"@RHSGREF"
+"@RHSSAF"
+"@ACE_Compat_RHS"
+```
+
+### Liberation RX Faction Config
+With RHS, change mission parameter:
+- **BLUFOR**: RHSUSAF / RHSGREF / RHSSAF
+- **OPFOR**: RHSAFRF / RHSGREF
+
+Much more variety than vanilla CUP.

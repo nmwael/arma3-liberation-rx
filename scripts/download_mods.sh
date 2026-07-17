@@ -20,6 +20,12 @@ MODS=(
     "665483317 @AdvancedRappelling"
     "1474177632 @AdvancedUrbanRappelling"
     "2659632121 @Liberation_RX"
+    # RHS (free, full factions, Liberation RX native support)
+    "843425103 @RHSAFRF"
+    "843577117 @RHSUSAF"
+    "843593391 @RHSGREF"
+    "1082989427 @RHSSAF"
+    "2174159327 @ACE_Compat_RHS"
 )
 
 echo "=== Installing SteamCMD ==="
@@ -63,7 +69,7 @@ else
 fi
 
 echo "=== Generating Bikey List ==="
-find "$MODS_DIR" -name "*.bikey" -exec cp -v {} "$MODS_DIR/keys/" \; 2>/dev/null || true
 mkdir -p "$MODS_DIR/keys"
+find "$MODS_DIR" -name "*.bikey" -exec cp -v {} "$MODS_DIR/keys/" \; 2>/dev/null || true
 
 echo "=== Done ==="
