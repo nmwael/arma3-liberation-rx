@@ -114,6 +114,16 @@ MODS=(
     "@GOS_Al_Rayak"
     "@GreenSeaTerrain"
     "@Kunduz_Afghanistan"
+    # QoL mods (included by default)
+    "@ArsenalSearch"
+    "@VET_Unflipping"
+    "@TrueDeath"
+    "@ReloadWhileAiming"
+    # Performance mods (included by default)
+    "@AGC"
+    "@CHViewDistance"
+    "@NoSmokeBounce"
+    "@SaroTweakMapFPS"
 )
 
 MOD_STRING=$(IFS=";"; echo "${MODS[*]}")

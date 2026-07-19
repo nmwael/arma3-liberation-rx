@@ -37,6 +37,16 @@ MODS=(
     "648172507 @GOS_Al_Rayak"
     "2645015212 @GreenSeaTerrain"
     "1188303655 @Kunduz_Afghanistan"
+    # QoL (included by default)
+    "2060770170 @ArsenalSearch"
+    "1703187116 @VET_Unflipping"
+    "3632946871 @TrueDeath"
+    "3450227250 @ReloadWhileAiming"
+    # Performance (included by default)
+    "1724884525 @AGC"
+    "837729515 @CHViewDistance"
+    "1486853849 @NoSmokeBounce"
+    "2523320712 @SaroTweakMapFPS"
 )
 
 echo "=== Installing SteamCMD ==="

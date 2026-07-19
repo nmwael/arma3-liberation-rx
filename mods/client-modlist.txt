@@ -35,3 +35,15 @@
 648172507   # G.O.S Al Rayak
 2645015212  # Green Sea Terrain
 1188303655  # Kunduz Afghanistan - Fixed Doors
+
+# QOL - Included by Default (4)
+2060770170  # Arsenal Search
+1703187116  # VET Unflipping
+3632946871  # True Death
+3450227250  # Reload While Aiming
+
+# Performance - Included by Default (4)
+1724884525  # AGC - Advanced Garbage Collector
+837729515   # CH View Distance
+1486853849  # No 40mm Smoke Bounce
+2523320712  # saroTweakMapFPS
