@@ -5,7 +5,7 @@
 ## Quick Start (Pterodactyl Panel)
 
 1. **Create Server** → Egg: `Arma 3` (parkervcp/arma3)
-2. **Docker Image**: `quay.io/parkervcp/pterodactyl-images:arma3_latest`
+2. **Docker Image**: `ghcr.io/parkervcp/games:arma3`
 3. **Startup Command**: `scripts/start.sh`
 4. **Variables** (set in Startup tab):
    - `SERVER_NAME` = "Liberation RX - 6 Player Co-op"
@@ -49,14 +49,17 @@ docker compose down
 arma3-liberation-rx/
 ├── docker-compose.yml          # Local testing
 ├── pterodactyl-egg.json        # Pterodactyl egg definition
+├── .devcontainer/              # Devcontainer config (no Docker-in-Docker)
 ├── .gitignore
 ├── README.md
 ├── scripts/
 │   ├── download_mods.sh        # SteamCMD mod downloader
 │   └── start.sh                # Pterodactyl entrypoint
 ├── mods/
-│   └── client-modpack.html     # Client preset (import in Arma 3 Launcher)
+│   ├── client-modlist.html     # Arma 3 Launcher import preset (35 mods)
+│   └── client-modlist.txt      # Human-readable mod list
 └── serverfiles/                # Mounted at /home/container/serverfiles
+    ├── modlist.html            # Server-side modlist (copy of client)
     ├── mpmissions/             # Liberation RX mission PBOs
     ├── @CBA_A3/                # Mod symlinks (created by download_mods.sh)
     ├── @ACE3/
@@ -65,23 +68,62 @@ arma3-liberation-rx/
 
 ---
 
-## Required Mods (Server + Client)
+## Full Mod List (35 mods)
 
+### Required (12)
+| Mod | Workshop ID | Folder | Notes |
+|-----|-------------|--------|-------|
+| CBA_A3 | `450814997` | @CBA_A3 | Core dependency |
+| ACE3 | `463939057` | @ACE3 | Medical, ballistics, interactions |
+| CUP Terrains - Core | `583496184` | @CUP_Terrains_Core | Terrain framework |
+| CUP Terrains - Maps | `583544987` | @CUP_Terrains_Maps | Map assets |
+| CUP Units | `497661914` | @CUP_Units | Faction units |
+| CUP Weapons | `497660133` | @CUP_Weapons | Weapon assets |
+| CUP Vehicles | `541888371` | @CUP_Vehicles | Vehicle assets |
+| Enhanced Movement | `333310405` | @EnhancedMovement | Climbing/vaulting |
+| Advanced Towing | `639837898` | @AdvancedTowing | Vehicle towing |
+| Advanced Rappelling | `713709341` | @AdvancedRappelling | Rope rappelling |
+| Advanced Urban Rappelling | `730310357` | @AdvancedUrbanRappelling | Urban rappelling |
+| **Liberation RX** | **`2133941118`** | **@Liberation_RX** | **Mission PBO (Altis)** |
+
+### RHS Faction Mods (3)
 | Mod | Workshop ID | Folder |
 |-----|-------------|--------|
-| CBA_A3 | 450814997 | @CBA_A3 |
-| ACE3 | 463939057 | @ACE3 |
-| CUP Terrains Core | 583496184 | @CUP_Terrains_Core |
-| CUP Terrains Maps | 583544987 | @CUP_Terrains_Maps |
-| CUP Units | 583545784 | @CUP_Units |
-| CUP Weapons | 583546887 | @CUP_Weapons |
-| CUP Vehicles | 583547213 | @CUP_Vehicles |
-| ACE Compat - CUP | 873218719 | @ACE_Compat_CUP |
-| Enhanced Movement | 333310405 | @EnhancedMovement |
-| Advanced Towing | 666656604 | @AdvancedTowing |
-| Advanced Rappelling | 665483317 | @AdvancedRappelling |
-| Advanced Urban Rappelling | 1474177632 | @AdvancedUrbanRappelling |
-| **Liberation RX** | **2659632121** | **@Liberation_RX** |
+| RHS: AFRF | `843425103` | @RHSAFRF |
+| RHS: USAF | `843577117` | @RHSUSAF |
+| RHS: GREF | `843593391` | @RHSGREF |
+
+### Quality of Life (13)
+| Mod | Workshop ID | Folder | Notes |
+|-----|-------------|--------|-------|
+| DUI - Squad Radar | `1638341685` | @DUI | Squad tracking HUD |
+| Align | `903134884` | @Align | Alignment helper |
+| Better Inventory | `2791403093` | @BetterInventory | Unified inventory view |
+| Suppress | `825174634` | @Suppress | Suppression effects |
+| Immerse | `825172265` | @Immerse | Screen effects |
+| Improved Game Sounds | `2995724580` | @ImprovedGameSounds | Audio enhancements |
+| Blastcore Murr Edition | `2257686620` | @Blastcore_Murr | Explosion effects |
+| Arsenal Search | `2060770170` | @ArsenalSearch | Ctrl+F search in Arsenal |
+| VET Unflipping | `1703187116` | @VET_Unflipping | Flip overturned vehicles |
+| True Death | `3632946871` | @TrueDeath | Black screen on death |
+| Reload While Aiming | `3450227250` | @ReloadWhileAiming | Reload while ADS |
+| Enhanced Soundscape | `825179978` | @Enhanced_Soundscape | Ambient audio |
+| Blastcore Edited | `767380317` | @Blastcore_Edited | Visual effects |
+
+### Performance (4)
+| Mod | Workshop ID | Folder | Notes |
+|-----|-------------|--------|-------|
+| AGC - Advanced Garbage Collector | `1724884525` | @AGC | Body/weapon cleanup for FPS |
+| CH View Distance | `837729515` | @CHViewDistance | Dynamic view distance by vehicle |
+| No 40mm Smoke Bounce | `1486853849` | @NoSmokeBounce | Smoke embeds instead of bouncing |
+| saroTweakMapFPS | `2523320712` | @SaroTweakMapFPS | Hide terrain objects for FPS |
+
+### Terrains (3)
+| Mod | Workshop ID | Folder |
+|-----|-------------|--------|
+| G.O.S Al Rayak | `648172507` | @GOS_Al_Rayak |
+| Green Sea Terrain | `2645015212` | @GreenSeaTerrain |
+| Kunduz Afghanistan | `1188303655` | @Kunduz_Afghanistan |
 
 > **No TFAR** — Using Discord for voice. Liberation RX works fine without radio mod.
 
@@ -89,9 +131,9 @@ arma3-liberation-rx/
 
 ## Client Setup (Share with Friends)
 
-1. Open `mods/client-modpack.html` in browser
+1. Open `mods/client-modlist.html` in browser
 2. Click each Workshop link → **Subscribe**
-3. Or: Arma 3 Launcher → Presets → Import → Select `client-modpack.html`
+3. Or: Arma 3 Launcher → Presets → Import → Select `client-modlist.html`
 4. Join server via IP:port or Steam server browser
 
 ---
@@ -179,74 +221,30 @@ docker compose up -d
 
 ## Links
 
-- [Liberation RX Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=2659632121)
+- [Liberation RX Workshop (Altis)](https://steamcommunity.com/sharedfiles/filedetails/?id=2133941118)
 - [Pterodactyl Arma 3 Egg](https://github.com/parkervcp/eggs/tree/master/game/arma3)
-- [Docker Image](https://quay.io/repository/parkervcp/pterodactyl-images?tab=tags)
+- [Docker Image](https://github.com/parkervcp/games/pkgs/container/games)
 
-## Optional Weapon Mods (Add More Weapons)
+---
 
-Add these to `scripts/download_mods.sh` MODS array and `scripts/start.sh` MODS array.
+## Workshop ID Notes
 
-### RHS (Best for faction variety + ACE compat)
-| Mod | Workshop ID | Folder |
-|-----|-------------|--------|
-| RHS: AFRF (Russia) | 843425103 | @RHSAFRF |
-| RHS: USAF (USA) | 843577117 | @RHSUSAF |
-| RHS: GREF (Serbia/others) | 843593391 | @RHSGREF |
-| RHS: SAF (Serbia Armed Forces) | 1082989427 | @RHSSAF |
-| ACE Compat - RHS | 2174159327 | @ACE_Compat_RHS |
+Some mods had dead Workshop IDs (result=9) that were replaced:
 
-> Adds full Russian/US/Serbian factions with vehicles, weapons, gear. Liberation RX supports RHS factions natively.
+| Original Mod | Dead ID | Replacement | New ID |
+|---|---|---|---|
+| CUP Units | `583545784` | CUP Units (old ID) | `497661914` |
+| CUP Weapons | `583546887` | CUP Weapons (old ID) | `497660133` |
+| CUP Vehicles | `583547213` | CUP Vehicles (old ID) | `541888371` |
+| Advanced Towing | `666656604` | Advanced Towing (new ID) | `639837898` |
+| Advanced Rappelling | `665483317` | Advanced Rappelling (new ID) | `713709341` |
+| Advanced Urban Rappelling | `1474177632` | Advanced Urban Rappelling (new ID) | `730310357` |
+| Liberation RX | `2659632121` | Liberation RX (Altis) | `2133941118` |
+| STUI (ShackTac UI) | `498724824` | DUI - Squad Radar | `1638341685` |
+| Blastcore Edited | `817849698` | Blastcore Edited (standalone) | `767380317` |
+| Enhanced Soundscape | `1771939421` | Enhanced Soundscape | `825179978` |
 
-### NIArms (Modern weapons, high quality)
-| Mod | Workshop ID | Folder |
-|-----|-------------|--------|
-| NIArms Core | 1602175578 | @NIArms_Core |
-| NIArms AK | 1602175578 | @NIArms_AK |
-| NIArms AR | 1602175578 | @NIArms_AR |
-| NIArms MGs | 1602175578 | @NIArms_MG |
-| NIArms SMGs | 1602175578 | @NIArms_SMG |
-| NIArms DMRs | 1602175578 | @NIArms_DMR |
-| ACE Compat - NIArms | 1602175578 | @ACE_Compat_NIArms |
-
-> Modern real-world weapons (HK416, SCAR, AK-12, MCX, etc.). All ACE compatible.
-
-### CUP Weapons Extensions
-| Mod | Workshop ID | Folder |
-|-----|-------------|--------|
-| CUP Weapons - Extended Magazines | 1944013651 | @CUP_Weapons_Extended |
-| CUP Weapons - Attachments | 1944013651 | @CUP_Weapons_Attachments |
-
-### DLCs (Paid, but excellent)
-| DLC | Workshop ID | Notes |
-|-----|-------------|-------|
-| Global Mobilization (Cold War Germany) | 1046945914 | Weapons, factions, Weferlingen map |
-| CSLA Iron Curtain (Czechoslovakia) | 2372269040 | Warsaw Pact weapons, Livonia map |
-| Western Sahara (2030s near-future) | 1824977259 | Modern weapons, Tanoa variant |
-| Contact (Livonia + aliens) | 1824977259 | Livonia map, new weapons |
-
-### To Add (Edit download_mods.sh):
-```bash
-# Add to MODS array:
-"843425103 @RHSAFRF"
-"843577117 @RHSUSAF"
-"843593391 @RHSGREF"
-"1082989427 @RHSSAF"
-"2174159327 @ACE_Compat_RHS"
-```
-
-Then add to start.sh MODS array:
-```bash
-"@RHSAFRF"
-"@RHSUSAF"
-"@RHSGREF"
-"@RHSSAF"
-"@ACE_Compat_RHS"
-```
-
-### Liberation RX Faction Config
-With RHS, change mission parameter:
-- **BLUFOR**: RHSUSAF / RHSGREF / RHSSAF
-- **OPFOR**: RHSAFRF / RHSGREF
-
-Much more variety than vanilla CUP.
+**Removed mods** (no replacement available):
+- ACE Compat - CUP (`873218719`) — integrated into ACE3
+- ACE Compat - RHS (`2174159327`) — integrated into ACE3
+- RHS: SAF (`1082989427`) — removed from Workshop entirely
