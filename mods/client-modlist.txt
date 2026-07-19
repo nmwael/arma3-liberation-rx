@@ -1,7 +1,7 @@
 # Liberation RX Client Modpack (6 Players)
-# Copy each Workshop ID to Steam Workshop search, or create a Steam Collection
+# Import in Arma 3 Launcher → Presets → Import → select client-modlist.html
 
-# Required (12)
+# Required (13)
 450814997   # CBA_A3
 463939057   # ACE3
 583496184   # CUP Terrains Core
@@ -14,6 +14,7 @@
 666656604   # Advanced Towing
 665483317   # Advanced Rappelling
 1474177632  # Advanced Urban Rappelling
+2659632121  # Liberation RX
 
 # RHS - Included by Default (5)
 843425103   # RHS: AFRF
@@ -22,10 +23,18 @@
 1082989427  # RHS: SAF
 2174159327  # ACE Compat - RHS
 
-# Quality of Life - Included by Default (3)
+# Quality of Life - Included by Default (9)
 498724824   # STUI (ShackTac UI)
 817849698   # Blastcore Edited
 1771939421  # Enhanced Soundscape
+903134884   # Align
+2791403093  # Better Inventory
+825174634   # Suppress
+825172265   # Immerse
+2995724580  # Improved Game Sounds
+2257686620  # Blastcore Murr Edition
 
-# Optional (1)
-723629297   # JSRS Soundmod (Heavy)
+# Terrains - Included by Default (3)
+648172507   # G.O.S Al Rayak
+2645015212  # Green Sea Terrain
+1188303655  # Kunduz Afghanistan - Fixed Doors

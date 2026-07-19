@@ -2,21 +2,44 @@
   "name": "Arma 3 Liberation RX",
   "description": "6-player co-op Liberation RX server for Pterodactyl (Discord voice, no TFAR)",
   "author": "nmwael",
-  "version": "1.0.0",
-  "startup": "scripts/start.sh",
+  "version": "1.1.0",
+  "startup": "./{{SERVER_BINARY}} -ip=0.0.0.0 -port={{SERVER_PORT}} -profiles=./serverprofile -bepath=./ -cfg=basic.cfg -config=server.cfg -mod=\"{{CLIENT_MODS}}\" -serverMod=\"{{SERVERMODS}}\" \"{{STARTUP_PARAMS}}\"",
   "script": {
     "privileged": false,
     "install": {
-      "commands": [
-        "mkdir -p /home/container/scripts",
-        "curl -sL https://raw.githubusercontent.com/nmwael/arma3-liberation-rx/main/scripts/download_mods.sh -o /home/container/scripts/download_mods.sh",
-        "curl -sL https://raw.githubusercontent.com/nmwael/arma3-liberation-rx/main/scripts/start.sh -o /home/container/scripts/start.sh",
-        "chmod +x /home/container/scripts/*.sh"
-      ],
-      "entrypoint": "bash /home/container/scripts/download_mods.sh"
+      "container": "ghcr.io/ptero-eggs/installers:debian",
+      "entrypoint": "/bin/bash",
+      "script": "#!/bin/bash\napt -y update\napt -y --no-install-recommends install curl lib32gcc-s1 ca-certificates\ncd /tmp\nmkdir -p /mnt/server/steamcmd /mnt/server/steamapps\ncurl -sSL -o steamcmd.tar.gz https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz\ntar -xzvf steamcmd.tar.gz -C /mnt/server/steamcmd\ncd /mnt/server/steamcmd\nchown -R root:root /mnt\nexport HOME=/mnt/server\n./steamcmd.sh +force_install_dir /mnt/server \"+login \\\"${STEAM_USER}\\\" \\\"${STEAM_PASS}\\\"\" +app_update ${STEAMCMD_APPID} ${STEAMCMD_EXTRA_FLAGS} validate +quit\nmkdir -p /mnt/server/.steam/sdk{32,64}\ncp -v linux32/steamclient.so /mnt/server/.steam/sdk32/steamclient.so\ncp -v linux64/steamclient.so /mnt/server/.steam/sdk64/steamclient.so\ncd /mnt/server/\n[[ -f basic.cfg ]] || curl -sSLO ${BASIC_URL}\n[[ -f server.cfg ]] || curl -sSLO ${BASIC_URL%/*}/server.cfg\nchmod 644 basic.cfg server.cfg\necho \"Installation completed...\""
     }
   },
   "variables": [
+    {
+      "name": "Steam Username",
+      "description": "Steam account for installation (does not need to own Arma 3)",
+      "env_variable": "STEAM_USER",
+      "default_value": "your_steam_username",
+      "user_viewable": false,
+      "user_editable": false,
+      "rules": "required|string"
+    },
+    {
+      "name": "Steam Password",
+      "description": "Steam account password (Steam Guard must be OFF)",
+      "env_variable": "STEAM_PASS",
+      "default_value": "your_steam_password",
+      "user_viewable": false,
+      "user_editable": false,
+      "rules": "required|string"
+    },
+    {
+      "name": "Server Binary",
+      "description": "Server binary to use (64-bit recommended)",
+      "env_variable": "SERVER_BINARY",
+      "default_value": "arma3server_x64",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|string|in:arma3server,arma3server_x64,arma3serverprofiling,arma3serverprofiling_x64"
+    },
     {
       "name": "Server Name",
       "description": "Server hostname shown in browser",
@@ -63,13 +86,31 @@
       "rules": "required|integer|min:1024|max:65535"
     },
     {
-      "name": "Mission File",
-      "description": "Liberation RX mission PBO filename in mpmissions/",
-      "env_variable": "MISSION_FILE",
-      "default_value": "Liberation_RX.Altis.pbo",
+      "name": "Modlist File",
+      "description": "Filename for exported Arma 3 Launcher modlist",
+      "env_variable": "MOD_FILE",
+      "default_value": "modlist.html",
       "user_viewable": true,
       "user_editable": true,
-      "rules": "required|string"
+      "rules": "nullable|string"
+    },
+    {
+      "name": "Automatic Updates",
+      "description": "Check for server/mod updates on startup",
+      "env_variable": "UPDATE_SERVER",
+      "default_value": "1",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "boolean"
+    },
+    {
+      "name": "Extra Startup Parameters",
+      "description": "Additional Arma 3 startup parameters",
+      "env_variable": "STARTUP_PARAMS",
+      "default_value": "-noLogs",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "string|nullable"
     }
   ],
   "ports": [
@@ -95,13 +136,13 @@
       "name": "BattlEye",
       "port_variable": "BATTLEYE_PORT",
       "protocol": "udp",
-      "default": 2305
+      "default": 2306
     }
   ],
   "mounts": [],
   "environment": {
     "STEAM_QUERY_PORT": "2303",
     "STEAM_MASTER_PORT": "2304",
-    "BATTLEYE_PORT": "2305"
+    "BATTLEYE_PORT": "2306"
   }
 }

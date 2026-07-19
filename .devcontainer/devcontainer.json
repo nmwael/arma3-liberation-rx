@@ -1,0 +1,21 @@
+{
+  "name": "Arma 3 Liberation RX",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "packages": [
+    "shellcheck",
+    "jq",
+    "curl"
+  ],
+  "postCreateCommand": "chmod +x scripts/*.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "timonwong.shellcheck",
+        "EditorConfig.EditorConfig"
+      ]
+    }
+  }
+}

@@ -107,6 +107,16 @@ MODS=(
     "@STUI"
     "@Blastcore_Edited"
     "@Enhanced_Soundscape"
+    "@Align"
+    "@BetterInventory"
+    "@Suppress"
+    "@Immerse"
+    "@ImprovedGameSounds"
+    "@Blastcore_Murr"
+    # Terrains
+    "@GOS_Al_Rayak"
+    "@GreenSeaTerrain"
+    "@Kunduz_Afghanistan"
 )
 
 MOD_STRING=$(IFS=";"; echo "${MODS[*]}")

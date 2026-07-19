@@ -26,10 +26,20 @@ MODS=(
     "843593391 @RHSGREF"
     "1082989427 @RHSSAF"
     "2174159327 @ACE_Compat_RHS"
-    # Optional Client QoL (included by default)
+    # Client QoL (included by default)
     "498724824 @STUI"
     "817849698 @Blastcore_Edited"
     "1771939421 @Enhanced_Soundscape"
+    "903134884 @Align"
+    "2791403093 @BetterInventory"
+    "825174634 @Suppress"
+    "825172265 @Immerse"
+    "2995724580 @ImprovedGameSounds"
+    "2257686620 @Blastcore_Murr"
+    # Terrains
+    "648172507 @GOS_Al_Rayak"
+    "2645015212 @GreenSeaTerrain"
+    "1188303655 @Kunduz_Afghanistan"
 )
 
 echo "=== Installing SteamCMD ==="
