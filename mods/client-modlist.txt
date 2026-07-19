@@ -1,32 +1,29 @@
 # Liberation RX Client Modpack (6 Players)
 # Import in Arma 3 Launcher → Presets → Import → select client-modlist.html
 
-# Required (13)
+# Required (11)
 450814997   # CBA_A3
 463939057   # ACE3
 583496184   # CUP Terrains Core
 583544987   # CUP Terrains Maps
-583545784   # CUP Units
-583546887   # CUP Weapons
-583547213   # CUP Vehicles
-873218719   # ACE Compat - CUP
+497661914   # CUP Units
+497660133   # CUP Weapons
+541888371   # CUP Vehicles
 333310405   # Enhanced Movement
-666656604   # Advanced Towing
-665483317   # Advanced Rappelling
-1474177632  # Advanced Urban Rappelling
-2659632121  # Liberation RX
+639837898   # Advanced Towing
+713709341   # Advanced Rappelling
+730310357   # Advanced Urban Rappelling
+2133941118  # Liberation RX
 
-# RHS - Included by Default (5)
+# RHS - Included by Default (3)
 843425103   # RHS: AFRF
 843577117   # RHS: USAF
 843593391   # RHS: GREF
-1082989427  # RHS: SAF
-2174159327  # ACE Compat - RHS
 
 # Quality of Life - Included by Default (9)
-498724824   # STUI (ShackTac UI)
-817849698   # Blastcore Edited
-1771939421  # Enhanced Soundscape
+1638341685  # DUI - Squad Radar
+767380317   # Blastcore Edited
+825179978   # Enhanced Soundscape
 903134884   # Align
 2791403093  # Better Inventory
 825174634   # Suppress
