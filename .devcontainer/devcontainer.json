@@ -2,7 +2,13 @@
   "name": "Arma 3 Liberation RX",
   "image": "mcr.microsoft.com/devcontainers/base:debian",
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {}
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainer-community/devcontainer-features/opencode.ai:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "containerEnv": {
+    "AI_FUN_TOKEN": "${localEnv:AI_FUN_TOKEN}",
+    "OPENCODE_ZEN_API_KEY": "${localEnv:OPENCODE_ZEN_API_KEY}"
   },
   "packages": [
     "shellcheck",
