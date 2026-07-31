@@ -19,6 +19,7 @@ MODS=(
     "713709341 @AdvancedRappelling"
     "730310357 @AdvancedUrbanRappelling"
     "2133941118 @Liberation_RX"
+    "3014195090 @LRX_Template"
     # RHS (free, full factions, Liberation RX native support)
     "843425103 @RHSAFRF"
     "843577117 @RHSUSAF"

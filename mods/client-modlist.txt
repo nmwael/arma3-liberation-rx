@@ -14,6 +14,7 @@
 713709341   # Advanced Rappelling
 730310357   # Advanced Urban Rappelling
 2133941118  # Liberation RX
+3014195090  # LRX_Template
 
 # RHS - Included by Default (3)
 843425103   # RHS: AFRF
